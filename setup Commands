@@ -1,0 +1,29 @@
+Step 1: System Foundation
+Check your system and install the basics.
+
+--bash--
+# Windows (use WSL2)
+wsl --install -d Ubuntu-24.04
+
+Step 2: Python with uv
+We use uv — it's 10-100x faster than pip and handles virtual environments automatically.
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv python install 3.12
+
+uv venv
+source .venv/bin/activate  # or .venv\Scripts\activate on Windows
+
+uv pip install numpy matplotlib jupyter
+Verify:
+
+main.py
+
+import sys
+print(f"Python {sys.version}")
+
+import numpy as np
+print(f"NumPy {np.__version__}")
+a = np.array([1, 2, 3])
+print(f"Vector: {a}, dot product with itself: {np.dot(a, a)}")
